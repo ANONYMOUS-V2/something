@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Before You Let Me Go…</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&family=Parisienne&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#070607;color:#f5eeee;font-family:Inter,sans-serif;font-weight:300;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.07;z-index:20;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
+section{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;padding:80px 22px}
+.hero{background:radial-gradient(circle at 50% 55%,#241318 0,#100b0d 38%,#070607 75%)}
+.hero:after,.photo-section:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.65))}
+.content{position:relative;z-index:2;max-width:720px;text-align:center}
+.kicker{font-size:11px;letter-spacing:5px;text-transform:uppercase;opacity:.55;margin-bottom:32px}
+h1,h2{font-family:"Cormorant Garamond",serif;font-weight:400}
+.hero h1{font-size:clamp(50px,10vw,100px);line-height:.9;margin-bottom:30px}
+.script{font-family:Parisienne,cursive}
+.hero p{font-family:"Cormorant Garamond",serif;font-size:24px;line-height:1.45;color:#ded2d2}
+.scroll{position:absolute;bottom:30px;z-index:3;font-size:10px;letter-spacing:3px;opacity:.55}
+.scroll span{display:block;margin-top:12px;font-size:20px}
+
+.chapter{background:#090708}
+.chapter:nth-of-type(even){background:#0d090b}
+.chapter .content{text-align:left}
+.chapter h2{font-size:clamp(42px,7vw,68px);line-height:1;margin-bottom:28px}
+.text{font-family:"Cormorant Garamond",serif;font-size:22px;line-height:1.65;color:#d8cccc}
+.text em{color:#e7a1b5;font-style:normal}
+.big{font-size:clamp(28px,5vw,48px);line-height:1.25;color:#fff}
+.center{text-align:center!important}
+
+.photo-wrap{margin:45px auto 0;width:min(430px,88vw);transform:rotate(-2deg)}
+.photo{aspect-ratio:4/3;border:10px solid #eee8df;background:linear-gradient(135deg,#282024,#110e11);box-shadow:0 18px 60px #000;display:flex;align-items:center;justify-content:center;color:#aaa;font-size:12px;letter-spacing:3px;text-transform:uppercase;position:relative;overflow:hidden}
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:top;
+    display:block;
+}
+.caption{text-align:center;font-family:Parisienne,cursive;font-size:23px;color:#d7c2b7;margin-top:12px}
+.photo-wrap:nth-child(odd){transform:rotate(2deg)}
+
+.quote{border-left:1px solid #a64f69;padding-left:25px;margin-top:35px}
+
+.reveal{min-height:90vh;background:radial-gradient(circle,#1b0c12,#070607 62%)}
+.reveal .message{display:none;margin-top:35px}
+.reveal.show .message{display:block;animation:fade 2s ease}
+.reveal.show .prompt{display:none}
+button{background:transparent;border:1px solid #d7a0b0;color:#f6e9ec;border-radius:40px;padding:16px 30px;font:400 13px Inter;letter-spacing:1px;cursor:pointer;transition:.3s}
+button:hover{background:#6d3045;transform:translateY(-2px)}
+.final{min-height:100vh;background:linear-gradient(#10090c,#050505);text-align:center}
+.final h2{font-size:clamp(55px,11vw,110px);color:#efb0c2;line-height:.9}
+.final .stay{font-family:Parisienne,cursive;font-size:clamp(45px,9vw,85px);margin-top:20px}
+.final .small{font-family:"Cormorant Garamond",serif;font-size:20px;line-height:1.6;color:#cdbfc1;margin-top:45px}
+.heart{font-size:18px;color:#d67d96;margin-top:35px}
+footer{padding:30px;text-align:center;background:#050505;color:#777;font-size:11px;letter-spacing:1px}
+.music{position:fixed;right:18px;top:18px;z-index:30}
+.music button{padding:11px 15px;font-size:11px}
+#type{min-height:1.5em}
+.fade{opacity:0;transform:translateY(25px);transition:1.2s ease}
+.fade.visible{opacity:1;transform:none}
+@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@media(max-width:600px){
+ section{padding:70px 20px}
+ .hero p{font-size:21px}
+ .text{font-size:20px}
+ .chapter h2{font-size:44px}
+}
+</style>
+</head>
+<body>
+
+<div class="music">
+  <button id="musicBtn" onclick="toggleMusic()">♫ Play music</button>
+  <audio id="music" loop>
+    <!-- Replace music.mp3 with your own instrumental audio file -->
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<section class="hero">
+  <div class="content fade">
+    <div class="kicker">A letter I couldn't say</div>
+    <h1>You said…<br><span class="script">“Jao.”</span></h1>
+    <p>So I thought maybe this time…<br>I should actually listen.</p>
+    <br>
+    <p>But before I go…<br>there are some things I need you to know.</p>
+  </div>
+  <div class="scroll">SCROLL SLOWLY <span>↓</span></div>
+</section>
+
+<section class="chapter">
+  <div class="content fade">
+    <div class="kicker">Chapter 01</div>
+    <h2>I don't know when it happened…</h2>
+    <p class="text">
+      Mujhe yaad nahi kab tum mere liye itni important ban gayi.<br><br>
+      Pehle tumse baat karna achha lagta tha…<br>
+      phir tumse baat kiye bina din adhura lagne laga.<br><br>
+      Aur pata hi nahi chala kab…<br>
+      <em>tum meri favourite person ban gayi.</em>
+    </p>
+    <div class="photo-wrap"><div class="photo"><img src="photos/photo1.jpg" alt="Memory 1"></div><div class="caption">My favourite memory ♡</div></div>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="content fade">
+    <div class="kicker">Chapter 02</div>
+    <h2>You probably don't know…</h2>
+    <p class="text">
+      Tumhari chhoti-chhoti baatein…<br>
+      tumhara gussa…<br>
+      tumhari smile…<br>
+      tumhara bina reason mujhe irritate karna…<br><br>
+      Shayad tumhare liye normal tha.<br>
+      <em>Mere liye nahi.</em><br><br>
+      Main in sab cheezon ko yaad rakhunga.
+    </p>
+    <div class="photo-wrap"><div class="photo"><img src="photos/photo2.jpg" alt="Memory 2"></div><div class="caption">The little things… ♡</div></div>
+  </div>
+</section>
+
+<section class="chapter center">
+  <div class="content fade">
+    <div class="kicker">Chapter 03</div>
+    <h2>The truth about today</h2>
+    <p class="text">
+      Aaj jab maine kaha ki main door jaa raha hoon…<br><br>
+      <span class="big">Sach kahun?</span><br><br>
+      <em class="big">Main jaana nahi chahta tha.</em><br><br>
+      Main bas ek baar tumhare muh se sunna chahta tha…
+    </p>
+    <div class="quote big">“Mat jao.”</div>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="content fade">
+    <div class="kicker">Chapter 04</div>
+    <h2>But you said… Jao.</h2>
+    <p class="text">
+      Us ek word ne mujhe bahut kuch samjha diya.<br><br>
+      Shayad meri jagah tumhari zindagi mein utni nahi hai…<br>
+      jitni tumhari meri zindagi mein hai.<br><br>
+      Aur shayad isi liye…<br>
+      <em>mujhe tumse door jaana seekhna padega.</em>
+    </p>
+    <br>
+    <p class="big">No.</p>
+    <p class="text">Ye jhoot hai.</p>
+    <div class="photo-wrap"><div class="photo"><img src="photos/photo3.jpg" alt="Memory 3"></div></div><div class="caption">Some memories refuse to leave.</div></div>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="content fade">
+    <div class="kicker">Chapter 05</div>
+    <h2>Because I still don't want to go.</h2>
+    <p class="text">
+      Main tumse naraz ho sakta hoon.<br>
+      Tumse hurt ho sakta hoon.<br>
+      Kabhi kabhi tumse door hone ki baat bhi kar sakta hoon.<br><br>
+      <em>Lekin tumse door rehna?</em><br><br>
+      Nahi pata kaise karunga.<br><br>
+      Maine tumhe kabhi paaya hi nahi…<br>
+      phir bhi tumhe khone ka darr hai.
+    </p>
+    <div class="photo-wrap"><div class="photo"><img src="photos/photo4.jpg" alt="Memory 4"></div><div class="caption">You became a part of me.</div></div>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="content fade">
+    <div class="kicker">Chapter 06</div>
+    <h2>If this is really goodbye…</h2>
+    <p class="text">
+      Toh thank you.<br><br>
+      Meri life ka ek aisa hissa banne ke liye…<br>
+      jise main chaah kar bhi bhool nahi paunga.<br><br>
+      Un conversations ke liye.<br>
+      Un stupid moments ke liye.<br>
+      Un smiles ke liye.<br><br>
+      Aur un saare moments ke liye…<br>
+      <em>jinke baare mein tum shayad bhool jaogi,<br>par main nahi.</em>
+    </p>
+    <div class="photo-wrap"><div class="photo"><img src="photos/photo5.jpg" alt="Memory 5"></div><div class="caption">Thank you for being you.</div></div>
+  </div>
+</section>
+
+<section class="reveal center" id="reveal">
+  <div class="content fade">
+    <div class="prompt">
+      <div class="kicker">Before the last page</div>
+      <p class="text">But there is one thing<br>I still haven't said.</p><br><br>
+      <button onclick="revealMessage()">Please read this till the end →</button>
+    </div>
+    <div class="message">
+      <p class="text">
+        I don't want a perfect ending.<br>
+        I don't want you to feel guilty.<br>
+        I don't want you to cry.<br><br>
+        I just wanted you to know the truth.
+      </p>
+      <br>
+      <p class="big"><em>I never wanted to leave you.</em></p>
+      <br>
+      <p class="text">Main bas chahta tha ki ek baar tum mujhe rok lo.</p>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="content fade">
+    <p class="text">Agar tum nahi rokogi…</p>
+    <h2>toh main chala jaunga.</h2>
+    <p class="text" style="margin-top:35px">Lekin agar tum bas ek baar keh do…</p>
+    <div class="stay">“Ruk ja.”</div>
+    <p class="small">Main kahin nahi jaunga.</p>
+    <div class="heart">♡</div>
+    <p class="small" style="font-size:16px;margin-top:55px">
+      Maybe this was never a goodbye.<br>
+      Maybe it was just me hoping you would ask me to stay.
+    </p>
+    <p class="small" style="font-size:14px;margin-top:35px">
+      — The person who still doesn't want to leave you.
+    </p>
+  </div>
+</section>
+
+<footer>made from everything I couldn't say out loud.</footer>
+
+<script>
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})
+},{threshold:.15});
+document.querySelectorAll('.fade').forEach(el=>observer.observe(el));
+
+function revealMessage(){
+  const r=document.getElementById('reveal');
+  r.classList.add('show');
+  setTimeout(()=>r.scrollIntoView({behavior:'smooth'}),100);
+}
+
+let playing=false;
+function toggleMusic(){
+  const a=document.getElementById('music'), b=document.getElementById('musicBtn');
+  if(!playing){
+    a.play().then(()=>{playing=true;b.textContent='♫ Pause music'}).catch(()=>{
+      alert('Add a file named music.mp3 in the same folder as index.html first.');
+    });
+  }else{a.pause();playing=false;b.textContent='♫ Play music'}
+}
+</script>
+</body>
+</html>
